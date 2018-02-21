@@ -1,0 +1,17 @@
+#!/usr/bin/python
+
+import os
+import subprocess
+import glob
+
+print ("Running git pre-commit hook for idemp packout")
+
+#command="unzip invpack.zip && git add ."
+listOfZipFiles = glob.glob('*.zip')
+
+#unzip all zip files found
+for zipFile in listOfZipFiles:
+	subprocess.call("unzip -q " + zipFile + " && git add .", shell=True)
+	print ("Processed: "+ zipFile)
+print ("Done!")
+
